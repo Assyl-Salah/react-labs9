@@ -60,16 +60,18 @@ class PageEmployeeCreate extends React.Component {
         Accept: "application/json"
       },
       body: JSON.stringify(employee)
-    }).then(res => {
-      if (res.status !== 201) {
-        this.setState({
-          isSaving: false,
-          error: `Saving returned status ${res.status}`
-        });
-      } else {
-        this.props.history.push("/");
-      }
-    });
+    })
+      .then(res => {
+        if (res.status !== 201) {
+          this.setState({
+            isSaving: false,
+            error: `Saving returned status ${res.status}`
+          });
+        } else {
+          this.props.history.push("/");
+        }
+      })
+      .then(this.props.addEmployee(employee));
   }
 
   render() {
