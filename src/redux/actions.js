@@ -1,4 +1,4 @@
-import { EMPLOYEES_LOADED } from "./constants";
+import { EMPLOYEES_LOADED, EMPLOYEE_ADDED } from "./constants";
 
 // eslint-disable-next-line import/prefer-default-export
 export const employeesLoaded = employees => {
@@ -9,3 +9,11 @@ export const employeesLoaded = employees => {
     }
   };
 }
+export const addEmployee = employee => {
+  return {
+    type: EMPLOYEE_ADDED,
+    payload: {
+      employee
+    }
+  };
+};
