@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-
-import { employeesLoaded } from "../redux/actions";
+import { fetchemployees } from "../redux/thunks";
+// import { employeesLoaded } from "../redux/actions";
 
 // eslint-disable-next-line max-len
 const EmployeeLine = ({ employee }) => (
@@ -12,17 +12,18 @@ const EmployeeLine = ({ employee }) => (
 );
 
 class PageEmployeesList extends React.Component {
+  // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
 
-    this.state = {
-      isLoading: false
-    };
+    // this.state = {
+    //     isLoading: false
+    //  };
   }
 
   componentDidMount() {
     if (!this.props.Loaded) {
-      this.setState({ isLoading: true });
+      /* this.setState({ isLoading: true });
       fetch("http://localhost:3004/employees")
         .then(data => data.json())
         // Without Redux
@@ -31,14 +32,15 @@ class PageEmployeesList extends React.Component {
         .then(employees => {
           this.props.employeesLoaded(employees);
           this.setState({ isLoading: false });
-        });
+        }); */
+      this.props.fetchemployees();
     }
   }
 
   render() {
-    const { isLoading } = this.state;
-    const { employees } = this.props;
-
+    // const { isLoading } = this.state;
+    //   const { employees } = this.props;
+    const { employees, isLoading } = this.props;
     if (isLoading) {
       return <p>Loading ...</p>;
     }
@@ -61,12 +63,14 @@ class PageEmployeesList extends React.Component {
 const mapStateToProps = (state /* , ownProps */) => {
   return {
     employees: state.employees,
-    Loaded: state.Loaded
+    Loaded: state.Loaded,
+    isLoading: state.isLoading
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  employeesLoaded: employees => dispatch(employeesLoaded(employees))
+  // employeesLoaded: employees => dispatch(employeesLoaded(employees))
+  fetchemployees: () => dispatch(fetchemployees())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PageEmployeesList);
