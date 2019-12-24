@@ -1,8 +1,10 @@
-import { EMPLOYEES_LOADED, EMPLOYEE_ADDED } from "./constants";
+import { EMPLOYEES_LOADED, EMPLOYEE_ADDED ,DATA_FETCHING ,FETCHING_ERROR} from "./constants";
 
 export const initialState = {
   employees: [],
-  Loaded: false
+  Loaded: false,
+  isLoading: false,
+  error: null
 };
 
 // Read this: https://redux.js.org/basics/reducers
@@ -12,7 +14,7 @@ const appReducer = (state = initialState, action) => {
     case EMPLOYEES_LOADED: {
       const { employees } = action.payload;
       // CAREFUL: You can't modify state variable directly.
-      return { ...state, employees, Loaded: true };
+      return { ...state, employees, Loaded: true, isLoading: false};
     }
     case EMPLOYEE_ADDED: {
       const { employee } = action.payload;
@@ -20,6 +22,14 @@ const appReducer = (state = initialState, action) => {
         ...state,
         employees: [...state.employees, employee]
       };
+    }
+    case DATA_FETCHING: {
+      const { employees } = action.payload;
+      return { ...state, employees, isLoading: true, error: null };
+    }
+    case FETCHING_ERROR: {
+      const { error } = action.payload;
+      return { ...state, error, isLoading: false };
     }
     default:
       return state;
