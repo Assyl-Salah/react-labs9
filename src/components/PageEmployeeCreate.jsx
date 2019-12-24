@@ -68,7 +68,7 @@ class PageEmployeeCreate extends React.Component {
             error: `Saving returned status ${res.status}`
           });
         } else {
-          this.props.history.push("/");
+          this.props.history.push("/list");
         }
       })
       .then(this.props.addEmployee(employee));
