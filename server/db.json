@@ -1,5 +1,5 @@
 {
-  "users":[
+  "users": [
     {
       "username": "john",
       "full_name": "John Doe"
@@ -157,70 +157,6 @@
       "name": "Rosanna Newman",
       "company": "EXIAND",
       "email": "rosannanewman@exiand.com"
-    },
-    {
-      "_id": 1576612079273,
-      "name": "aasas",
-      "age": 18,
-      "company": "",
-      "email": "",
-      "id": "XU3iweA"
-    },
-    {
-      "_id": 1576612634520,
-      "name": "ygygyg",
-      "age": 18,
-      "company": "",
-      "email": "",
-      "id": "pQCEyfk"
-    },
-    {
-      "_id": 1576612708632,
-      "name": "ffff",
-      "age": 18,
-      "company": "",
-      "email": "",
-      "id": "C4GCqSm"
-    },
-    {
-      "_id": 1577104919315,
-      "name": "dvdvfd",
-      "age": 18,
-      "company": "",
-      "email": "",
-      "id": "5yJRoUF"
-    },
-    {
-      "_id": 1577105136534,
-      "name": "xcx",
-      "age": 18,
-      "company": "",
-      "email": "",
-      "id": "ZJxLYSR"
-    },
-    {
-      "_id": 1577195460581,
-      "name": "hb",
-      "age": 18,
-      "company": "",
-      "email": "",
-      "id": "1hm_tb5"
-    },
-    {
-      "_id": 1577196250490,
-      "name": "dfdfd",
-      "age": 18,
-      "company": "",
-      "email": "",
-      "id": "2RqArRv"
-    },
-    {
-      "_id": 1577196402133,
-      "name": "fvvfv",
-      "age": 18,
-      "company": "",
-      "email": "",
-      "id": "jxdr8xx"
     }
   ]
 }

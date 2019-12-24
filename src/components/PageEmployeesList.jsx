@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchemployees } from "../redux/thunks";
 // import { employeesLoaded } from "../redux/actions";
@@ -40,19 +40,25 @@ class PageEmployeesList extends React.Component {
   render() {
     // const { isLoading } = this.state;
     //   const { employees } = this.props;
-    const { employees, isLoading } = this.props;
+    const { employees, isLoading, user, isActive } = this.props;
     if (isLoading) {
       return <p>Loading ...</p>;
     }
 
     return (
       <div>
+        {isActive && (
+          <div align="right">
+            <h4>{user.full_name}</h4>
+          </div>
+        )}
         <h1>Employees List:</h1>
         {employees &&
           employees.map(employee => (
             <EmployeeLine key={employee._id} employee={employee} />
           ))}
         <Link to="/new">
+          {/* eslint-disable-next-line react/button-has-type */}
           <button>Create employee</button>
         </Link>
       </div>
@@ -64,7 +70,9 @@ const mapStateToProps = (state /* , ownProps */) => {
   return {
     employees: state.employees,
     Loaded: state.Loaded,
-    isLoading: state.isLoading
+    isLoading: state.isLoading,
+    user: state.user,
+    isActive: state.isActive
   };
 };
 
@@ -73,4 +81,8 @@ const mapDispatchToProps = dispatch => ({
   fetchemployees: () => dispatch(fetchemployees())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PageEmployeesList);
+// eslint-disable-next-line max-len
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(PageEmployeesList));

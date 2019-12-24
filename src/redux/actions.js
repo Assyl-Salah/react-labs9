@@ -2,7 +2,8 @@ import {
   EMPLOYEES_LOADED,
   EMPLOYEE_ADDED,
   DATA_FETCHING,
-  FETCHING_ERROR
+  FETCHING_ERROR,
+  LOGIN_SAVED
 } from "./constants";
 
 // eslint-disable-next-line import/prefer-default-export
@@ -36,15 +37,12 @@ export const FetchError = error => {
       error
     }
   };
-};
-/* export const thunk = () => {
-  return dispatch => {
-    dispatch(launchDataFetching());
-    return fetch("http://localhost:3004/employees")
-      .then(data => data.json())
-      .then(
-        employees => dispatch(dataFetched(employees)),
-        error => dispatch(FetchError(error))
-      );
+}
+export const loginsave = user => {
+  return {
+    type: LOGIN_SAVED,
+    payload: {
+      user
+    }
   };
-};         */
+}
