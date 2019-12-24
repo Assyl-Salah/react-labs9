@@ -3,7 +3,8 @@ import {
   EMPLOYEE_ADDED,
   DATA_FETCHING,
   FETCHING_ERROR,
-  LOGIN_SAVED
+  LOGIN_SAVED,
+  LOGIN_ERROR
 } from "./constants";
 
 // eslint-disable-next-line import/prefer-default-export
@@ -37,7 +38,7 @@ export const FetchError = error => {
       error
     }
   };
-}
+};
 export const loginsave = user => {
   return {
     type: LOGIN_SAVED,
@@ -45,4 +46,12 @@ export const loginsave = user => {
       user
     }
   };
-}
+};
+export const loginerror = errorname => {
+  return {
+    type: LOGIN_ERROR,
+    payload: {
+      errorname
+    }
+  };
+};

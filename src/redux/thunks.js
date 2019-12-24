@@ -1,4 +1,10 @@
-import { dataFetched, FetchError, employeesLoaded, loginsave } from "./actions";
+import {
+  dataFetched,
+  FetchError,
+  employeesLoaded,
+  loginsave,
+  loginerror
+} from "./actions";
 
 // eslint-disable-next-line import/prefer-default-export
 export const fetchemployees = () => {
@@ -20,6 +26,8 @@ export const fetchuser = uname => {
         const user = users.find(user => user.username === uname);
         if (user !== undefined) {
           dispatch(loginsave(user));
+        } else {
+          dispatch(loginerror(uname));
         }
       });
   };

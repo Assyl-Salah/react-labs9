@@ -32,6 +32,10 @@ class PageLogin extends React.Component {
   }
 
   render() {
+    const { user } = this.props;
+    if (user !== null) {
+      return <h2>User {user.full_name} is already logged in!!!</h2>;
+    }
     return (
       <div align="center">
         <h3>Login</h3>

@@ -1,10 +1,18 @@
-import { EMPLOYEES_LOADED, EMPLOYEE_ADDED ,DATA_FETCHING ,FETCHING_ERROR , LOGIN_SAVED ,LOGIN_ERROR} from "./constants";
+import {
+  EMPLOYEES_LOADED,
+  EMPLOYEE_ADDED,
+  DATA_FETCHING,
+  FETCHING_ERROR,
+  LOGIN_SAVED,
+  LOGIN_ERROR
+} from "./constants";
 
 export const initialState = {
   employees: [],
   Loaded: false,
   isLoading: false,
   error: null,
+  user: null,
   isActive: false
 };
 
@@ -36,6 +44,11 @@ const appReducer = (state = initialState, action) => {
     case LOGIN_SAVED: {
       const { user } = action.payload;
       return { ...state, user, isActive: true };
+    }
+    case LOGIN_ERROR: {
+      const { errorname } = action.payload;
+      alert(`User ${errorname} not found`);
+      return { ...state, user: null, isActive: false };
     }
     default:
       return state;
